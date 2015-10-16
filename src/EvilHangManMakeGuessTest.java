@@ -14,17 +14,19 @@ public class EvilHangManMakeGuessTest {
     String[] tempArray = {"BEDA","CEDA","PETA","CARD","TEAR"};
     evil.wordlist = tempArray;
     evil.numWords = evil.wordlist.length;
+   
   }
   
   @Test
   public void testNonLetterCharacter() {
     initialize();
     boolean ret = evil.makeGuess('$');
-    assertEquals("Test to check letterGuess",evil.letterGuess, '$');
-    assertEquals("Test to check letter history",evil.letterGuessHistory, "");
-    assertEquals("Test to check number of guesses",evil.guess, 4);
-    assertEquals("Test to check number of words",evil.guess, 4);
-    assertEquals("Test to check non letter guess",ret, false);
+    assertEquals("Test to check letterGuess failed",'$', evil.letterGuess );
+    assertEquals("Test to check letter history failed", "",evil.letterGuessHistory);
+    assertEquals("Test to check number of guesses failed",4, evil.guess);
+    assertEquals("Test to check number of words failed",5, evil.numWords);
+    assertEquals("Test to check non letter guess failed",false, ret);
+    
     
   }
   
@@ -33,11 +35,11 @@ public class EvilHangManMakeGuessTest {
   public void testAllLetterCharacterWrongGuess() {
     initialize();
     boolean ret = evil.makeGuess('E');
-    assertEquals("Test for false guess in Evil Hangman Failed",ret, false);
-    assertEquals("Test to check letterGuess",evil.letterGuess, 'E');
-    assertEquals("Test to check letter history",evil.letterGuessHistory, "E");
-    assertEquals("Test to check number of guesses",evil.guess, 3);
-    assertEquals("Test to check number of words",evil.numWords, 1);
+    assertEquals("Test for false guess in Evil Hangman Failed",false,ret);
+    assertEquals("Test to check letterGuess failed",evil.letterGuess, 'E');
+    assertEquals("Test to check letter history failed","E", evil.letterGuessHistory );
+    assertEquals("Test to check number of guesses failed",3, evil.guess);
+    assertEquals("Test to check number of words failed", 1,evil.numWords);
     
   }
   @Test
@@ -46,11 +48,11 @@ public class EvilHangManMakeGuessTest {
     String[] tempArray = {"CARD","TEAR"};
     evil.wordlist = tempArray;
     evil.numWords = evil.wordlist.length;
-    boolean ret = evil.makeGuess('A');
-    assertEquals("Test to check letter history",evil.letterGuessHistory, "");
-    assertEquals("Test to check letterGuess",evil.letterGuess, 'A');
-    assertEquals("Test to check number of guesses",evil.guess, 4);
-    assertEquals("Test to check number of words",evil.numWords, 2);
-    assertEquals("Test for true guess in Evil Hangman(converted to Normal) Failed",ret, true);
+    boolean ret = evil.makeGuess('R');
+    assertEquals("Test to check letter history failed", "", evil.letterGuessHistory);
+    assertEquals("Test to check letterGuess failed",'R',evil.letterGuess);
+    assertEquals("Test to check number of guesses failed",4, evil.guess);
+    assertEquals("Test to check number of words failed",2,evil.numWords);
+    assertEquals("Test for true guess in Evil Hangman(converted to Normal) Failed",true,ret);
   }
 }

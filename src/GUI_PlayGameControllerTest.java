@@ -27,24 +27,11 @@ public class GUI_PlayGameControllerTest {
     initialize();
     playGame.inputLetter = 'E';
     playGame.controller();
-    assertEquals("Test to change to Normal Hangman (result)",playGame.result.getText(), "Nope!");
-    assertEquals("Test to check number of guesses remaining(label3)",playGame.label3.getText(), "Guesses Remaining: " + playGame.game.numGuessesRemaining());
-    assertEquals("Test to check value of label 2 ","Secret Word: "+playGame.game.displayGameState(), playGame.label2.getText());
+    assertEquals("Test to check for Game over with wrong guesses failed",false,playGame.game.isWin());
+    assertEquals("Test to change to Normal Hangman (result) failed", "Nope!", playGame.result.getText());
+    assertEquals("Test to check number of guesses remaining(label3) failed", "Guesses Remaining: " + playGame.game.numGuessesRemaining(), playGame.label3.getText());
+    assertEquals("Test to check value of label 2 failed","Secret Word: "+playGame.game.displayGameState(), playGame.label2.getText());
   }
-  
-//  @Test
-//  public void GameOverIncorrectGuesses() {
-//    initialize();
-//    playGame.inputLetter = 'L';
-//    playGame.controller();
-//    playGame.inputLetter = 'S';
-//    playGame.controller();
-//    playGame.inputLetter = 'P';
-//    playGame.controller();
-//    assertEquals("Test to check for Game over with wrong guesses",playGame.game.isWin(), false);
-//    assertEquals("Test to check value of label 2 ","Secret Word: "+playGame.game.displayGameState(), playGame.label2.getText());
-//    assertEquals("Test to check number of guesses remaining(label3)",playGame.label3.getText(), "Guesses Remaining: " + playGame.game.numGuessesRemaining());
-//  }
   
   @Test
   public void GameOverIncorrectGuesses() {
@@ -57,9 +44,10 @@ public class GUI_PlayGameControllerTest {
     playGame.show();
     playGame.inputLetter = 'L';
     playGame.controller();
-    assertEquals("Test to check for Game over with wrong guesses",playGame.game.isWin(), false);
-    assertEquals("Test to check value of label 2 ","Secret Word: "+playGame.game.displayGameState(), playGame.label2.getText());
-    assertEquals("Test to check number of guesses remaining(label3)",playGame.label3.getText(), "Guesses Remaining: " + playGame.game.numGuessesRemaining());
+    assertEquals("Test to change to Normal Hangman (result) failed", "Nope!", playGame.result.getText());
+    assertEquals("Test to check for Game over with wrong guesses failed",false,playGame.game.isWin());
+    assertEquals("Test to check value of label 2 failed","Secret Word: "+playGame.game.displayGameState(), playGame.label2.getText());
+    assertEquals("Test to check number of guesses remaining(label3) failed", "Guesses Remaining: " + playGame.game.numGuessesRemaining(), playGame.label3.getText());
   }
   
   @Test
@@ -71,9 +59,10 @@ public class GUI_PlayGameControllerTest {
     playGame.controller();
     playGame.inputLetter = 'C';
     playGame.controller();
-    assertEquals("Test to check for Game over with right guesses",playGame.game.isWin(), true);
-    assertEquals("Test to check number of guesses remaining(label3)",playGame.label3.getText(), "Guesses Remaining: " + playGame.game.numGuessesRemaining());
-    assertEquals("Test to check value of label 2 ","Secret Word: "+playGame.game.displayGameState(), playGame.label2.getText());
+    assertEquals("Test to change to Normal Hangman (result) failed", "Yes!", playGame.result.getText());
+    assertEquals("Test to check for Game over with right guesses failed",true, playGame.game.isWin());
+    assertEquals("Test to check number of guesses remaining(label3) failed",playGame.label3.getText(), "Guesses Remaining: " + playGame.game.numGuessesRemaining());
+    assertEquals("Test to check value of label 2 failed","Secret Word: "+playGame.game.displayGameState(), playGame.label2.getText());
         
   }
   
